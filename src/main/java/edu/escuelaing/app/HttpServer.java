@@ -3,20 +3,26 @@ package edu.escuelaing.app;
 import java.net.*;
 import java.io.*;
 
+/**
+ * Web server, por el puerto 37600
+ * @author Luis Benavides
+ * Se han realizado algunas modificaciones
+ * @author Ricardo Olarte
+ */
 public class HttpServer {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
         try {
-            serverSocket = new ServerSocket(36000);
+            serverSocket = new ServerSocket(37600);
         } catch (IOException e) {
-            System.err.println("Could not listen on port: 35000.");
+            System.err.println("Could not listen on port: 37600");
             System.exit(1);
         }
         boolean running = true;
         while(running) {
             Socket clientSocket = null;
             try {
-                System.out.println("Listo para recibir ...");
+                System.out.println("Ready for receive ...");
                 clientSocket = serverSocket.accept();
             } catch (IOException e) {
                 System.err.println("Accept failed.");
@@ -80,35 +86,6 @@ public class HttpServer {
                 + "        </form> \n"
                 + "        <div id=\"getrespmsg\"></div>\n"
                 + "\n"
-                + "        <script>\n"
-                + "            function loadGetMsg() {\n"
-                + "                let nameVar = document.getElementById(\"name\").value;\n"
-                + "                const xhttp = new XMLHttpRequest();\n"
-                + "                xhttp.onload = function() {\n"
-                + "                    document.getElementById(\"getrespmsg\").innerHTML =\n"
-                + "                    this.responseText;\n"
-                + "                }\n" + "                xhttp.open(\"GET\", \"/hello?name=\"+nameVar);\n"
-                + "                xhttp.send();\n"
-                + "            }\n"
-                + "        </script>\n"
-                + "\n"
-                + "        <h1>Form with POST</h1>\n"
-                + "        <form action=\"/hellopost\">\n"
-                + "            <label for=\"postname\">Name:</label><br>\n"
-                + "            <input type=\"text\" id=\"postname\" name=\"name\" value=\"John\"><br><br>\n"
-                + "            <input type=\"button\" value=\"Submit\" onclick=\"loadPostMsg(postname)\">\n"
-                + "        </form>\n"
-                + "        \n"
-                + "        <div id=\"postrespmsg\"></div>\n"
-                + "        \n" + "        <script>\n"
-                + "            function loadPostMsg(name){\n"
-                + "                let url = \"/hellopost?name=\" + name.value;\n"
-                + "\n"
-                + "                fetch (url, {method: 'POST'})\n"
-                + "                    .then(x => x.text())\n"
-                + "                    .then(y => document.getElementById(\"postrespmsg\").innerHTML = y);\n"
-                + "            }\n"
-                + "        </script>\n"
                 + "    </body>\n"
                 + "</html>";
         return response;
