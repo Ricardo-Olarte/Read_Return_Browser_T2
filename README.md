@@ -5,7 +5,7 @@ Por medio de este repositorio, podemos visualizar desde nuestro archivo local, d
 Jose Ricardo Olarte Pardo
 
 ### Directorios de la estructuración
-![]
+![directorios](https://github.com/Ricardo-Olarte/Read_Return_Browser_T2/blob/main/images/directorios.png)
 
 Se distribuye la estructuración de los directorios, por medio de la imagen visualizada.
 
@@ -23,15 +23,17 @@ Abriendo desde el browser consultamos localhost:37600
 2. Abrimos intellij y corremos la clase HttpServer
 3. Ejecutamos HTTP server y abrimos nuestro browser
 
-![]
+![http_server](https://github.com/Ricardo-Olarte/Read_Return_Browser_T2/blob/main/images/HttpServer.png)
+![web](https://github.com/Ricardo-Olarte/Read_Return_Browser_T2/blob/main/images/index.png)
 
 
 ### Clases Utilizadas
 #### HttpServer
 Esta clase es la encarga del web server, a partir de un socket "37600", podemos hacer la consulta de archivos locales, desde el browser
+![http_server](https://github.com/Ricardo-Olarte/Read_Return_Browser_T2/blob/main/images/HttpServer.png)
 #### LocalFileReader
 Clase encargada de generar un index.html, para la lectura de los distintos archivos, de los directorios
-
+![Local_files](https://github.com/Ricardo-Olarte/Read_Return_Browser_T2/blob/main/images/LocalFileReader.png)
 
 ### Funcionalidad
 * El web server puede leer distintos archivos locales, de diferentes tipos, JPG, HTML, GIF, entre otros.
