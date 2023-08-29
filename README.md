@@ -42,3 +42,6 @@ Clase encargada de generar un index.html, para la lectura de los distintos archi
 * Se tiene en cuenta que se realizó un cambio en las imagénes a base64 para su lectura.
 * Cada una de las clases de manera independiente, realiza tanto el index y su lectura para mostrarlo en el server
 * El index.html que viene por default, está modificado, que sea de manera agradable para el usuario, en cambio, al ejecutar LocalFileReader y luego corremos el server, se visualizará la lectura de otro tipos de archivos, pero no mostrará la misma interfaz.
+
+  ## CircleCI
+  [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Ricardo-Olarte/Read_Return_Browser_T2/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Ricardo-Olarte/Read_Return_Browser_T2/tree/main)
