@@ -1,0 +1,1 @@
+"Hola mundo!", abierto desde un texto

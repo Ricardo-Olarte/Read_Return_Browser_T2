@@ -2,6 +2,9 @@ package edu.escuelaing.app;
 
 import java.net.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Web server, por el puerto 37600
@@ -53,6 +56,7 @@ public class HttpServer {
             }else{
                 outputLine = indexResponse();
             }
+
             out.println(outputLine);
             out.close();
             in.close();
@@ -61,33 +65,32 @@ public class HttpServer {
         serverSocket.close();
     }
 
+    /**
+     *
+     * @param uri
+     * @return
+     */
     public static String getHello(String uri){
         String name = uri.replace("/hello?name=", "");
         return "{ \"msg\": \"Hello " + name + "\"}";
     }
 
+    /**
+     * @return
+     */
     public static  String indexResponse(){
+        byte[] encodedBytes = new byte[0];
+        try{
+            encodedBytes = Files.readAllBytes(Paths.get("src/main/resources/index.html"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        String indexHTML = new String(encodedBytes, StandardCharsets.UTF_8);
         String response = "HTTP/1.1 200 OK\r\n"
                 + "Content-type: text/html\r\n"
                 + "\r\n"
                 + "<!DOCTYPE html>\n"
-                + "<html>\n"
-                + "    <head>\n"
-                + "        <title>Form Example</title>\n"
-                + "        <meta charset=\"UTF-8\">\n"
-                + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "    </head>\n"
-                + "    <body>\n"
-                + "        <h1>Form with GET</h1>\n"
-                + "        <form action=\"/hello\">\n"
-                + "            <label for=\"name\">Name:</label><br>\n"
-                + "            <input type=\"text\" id=\"name\" name=\"name\" value=\"John\"><br><br>\n"
-                + "            <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n"
-                + "        </form> \n"
-                + "        <div id=\"getrespmsg\"></div>\n"
-                + "\n"
-                + "    </body>\n"
-                + "</html>";
+                + indexHTML;
         return response;
     }
 }
